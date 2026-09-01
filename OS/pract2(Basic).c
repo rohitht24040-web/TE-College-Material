@@ -32,3 +32,5 @@ int main()
 	}
 	
 }
+
+//instruction to run the file gcc filename then ./a.out
