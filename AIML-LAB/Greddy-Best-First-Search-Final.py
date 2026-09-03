@@ -22,6 +22,21 @@ heuristic = {
 }
 
 
+def display_tree():
+    print("\n========== COMPLETE TREE ==========\n")
+
+    print("                 A(6)")
+    print("                /    \\")
+    print("             B(4)    C(3)")
+    print("             /  \\       \\")
+    print("          D(3)  E(1)    F(2)")
+    print("            |      |       |")
+    print("          G(0)   G(0)    G(0)")
+
+    print("\n====================================")
+    print("Format: Node(Heuristic)")
+
+
 def greedy_best_first_search(start, goal):
 
     priority_queue = []
@@ -65,6 +80,8 @@ def find_cost(path):
     return cost
 
 
+display_tree()
+
 start_time = time.perf_counter()
 
 path, nodes = greedy_best_first_search('A', 'G')
@@ -74,14 +91,17 @@ end_time = time.perf_counter()
 execution_time = end_time - start_time
 
 
-print("Greedy Best First Search")
+print("\n====== GREEDY BEST FIRST SEARCH ======\n")
+
+print("Start Node      :", "A")
+print("Goal Node       :", "G")
 
 if path:
-    print("Path:", " -> ".join(path))
-    print("Path Cost:", find_cost(path))
-    print("Nodes Explored:", nodes)
-    print("Execution Time:", execution_time, "seconds")
+    print("Path            :", " -> ".join(path))
+    print("Path Cost       :", find_cost(path))
+    print("Nodes Explored  :", nodes)
+    print("Execution Time  :", round(execution_time, 6), "seconds")
 else:
     print("No path found")
-    
-    
+
+print("\n======================================")
