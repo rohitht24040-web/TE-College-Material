@@ -9,9 +9,9 @@ sem_t ch[5];
 void *philosopher(void *arg)
 {
 	int i = *(int *)arg;
-	
+	printf("\nPhilosopher is waiting\n");
 	sem_wait(&room);
-	printf("\nPhilosopher %d entered in the room\n",i);
+	printf("Philosopher %d entered in the room\n",i);
 		sem_wait(&ch[i]); //Left Chopstick
 		printf("Philosopher %d Picked the left ChopStick\n",i);
 			sem_wait(&ch[(i+1)% 5]);
@@ -20,7 +20,7 @@ void *philosopher(void *arg)
 			sem_post(&ch[(i+1)%5]);
 			printf("Philosopher %d Release the left ChopStick\n",i);
 		sem_post(&ch[i]);
-		printf("Philosopher %d Release the left ChopStick\n",i);
+		printf("Philosopher %d Release the Right ChopStick\n",i);
 	sem_post(&room);
 	printf("Philosopher %d Leave the Room\n",i);	
 }
